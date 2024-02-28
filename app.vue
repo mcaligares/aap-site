@@ -1,38 +1,27 @@
 <script setup lang="ts">
-const colorMode = useColorMode()
-
-const color = computed(() => colorMode.value === 'dark' ? '#111827' : 'white')
+import config from './content/config'
 
 useHead({
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { key: 'theme-color', name: 'theme-color', content: color }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: 'es'
   }
 })
 
 useSeoMeta({
-  titleTemplate: '%s - Nuxt UI Pro - SaaS template',
-  ogImage: 'https://saas-template.nuxt.dev/social-card.png',
-  twitterImage: 'https://saas-template.nuxt.dev/social-card.png',
-  twitterCard: 'summary_large_image'
+  titleTemplate: config.title,
 })
 </script>
 
 <template>
   <div>
-    <NuxtLoadingIndicator />
-
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-
-    <UNotifications />
+    <NuxtPage />
   </div>
 </template>
